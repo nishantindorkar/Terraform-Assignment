@@ -8,13 +8,13 @@ variable "type" {
   default = "network"
 }
 
-# variable "nlb_name" {
-#   description = "Name of the Network Load Balancer"
-#   type        = string
-# }
-
 variable "processed_bytes_per_month" {
   description = "Processed bytes per month (in GB)"
   type        = number
   default     = 30
+}
+
+variable "eks_cluster_cost" {
+  type        = number
+  default     = 1
 }

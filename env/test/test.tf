@@ -27,3 +27,11 @@ module "loadbalancer" {
   public_subnet_ids  = module.vpc.public_subnet_ids
   private_subnet_ids = module.vpc.private_subnet_ids
 }
+
+module "eks-cluster" {
+  source            = "../../modules/eks"
+  public_subnet_ids = module.vpc.public_subnet_ids
+  security_group_id = module.vpc.security_group_id
+  appname            = var.appname
+  env                = var.env
+}

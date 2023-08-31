@@ -19,15 +19,15 @@ variable "cidr_blocks_defualt" {
 }
 variable "public_cidr_blocks" {
   type    = list(string)
-  default = ["10.0.1.0/24"]
+  default = ["10.0.1.0/24", "10.0.2.0/24"]
 }
 variable "private_cidr_blocks" {
   type    = list(string)
-  default = ["10.0.2.0/24"]
+  default = ["10.0.3.0/24", "10.0.4.0/24"]
 }
 variable "availability_zones" {
   type    = list(string)
-  default = ["ap-south-1a"]
+  default = ["ap-south-1a", "ap-south-1b"]
 }
 variable "map_public_ip_on_launch" {
   type    = bool
