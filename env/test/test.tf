@@ -13,12 +13,17 @@ module "vpc" {
   map_public_ip_on_launch = var.map_public_ip_on_launch
   appname                 = var.appname
   env                     = var.env
-  name_prefix             = ["web", "app", "data"]
 }
 
-# module "loadbalancer" {
-#   source             = "../../modules/load_balancer"
-#   internal           = var.internal
-#   type               = var.type
-#   tags               = { Owner = "test-loadbalancer" }
-# }
+module "loadbalancer" {
+  source             = "../../modules/load_balancer"
+  internal           = var.internal
+  type               = var.type
+  tags               = { Owner = "test-loadbalancer" }
+  appname            = var.appname
+  env                = var.env
+  security_group_id  = module.vpc.security_group_id
+  vpc_id             = module.vpc.vpc_id
+  public_subnet_ids  = module.vpc.public_subnet_ids
+  private_subnet_ids = module.vpc.private_subnet_ids
+}

@@ -1,10 +1,37 @@
-variable "nlb_name" {
-  description = "Name of the Network Load Balancer"
-  type        = string
+variable "tags" {
+  type    = map(string)
+  default = {}
 }
 
-variable "processed_bytes_per_month" {
-  description = "Processed bytes per month (in GB)"
-  type        = number
-  default     = 30
+variable "vpc_id" {
+  type = string
+}
+
+variable "security_group_id" {
+  type = string
+}
+variable "public_subnet_ids" {
+  type = list(string)
+}
+
+variable "private_subnet_ids" {
+  type = list(string)
+}
+variable "type" {
+  type = string
+}
+
+variable "appname" {
+  type    = string
+  default = "eks"
+}
+
+variable "env" {
+  type    = string
+  default = "test"
+}
+
+variable "internal" {
+  type    = bool
+  default = false
 }
