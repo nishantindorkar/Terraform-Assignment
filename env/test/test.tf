@@ -55,3 +55,9 @@ module "ecr-repository" {
 module "customer-master-keys" {
     source = "../../modules/cmk"
 }
+
+module "simple-storage-service" {
+    source = "../../modules/s3"
+    appname                = var.appname
+    env                    = var.env
+}

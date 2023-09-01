@@ -38,3 +38,28 @@ output "estimated_ecr_storage_cost" {
   description = "Estimated monthly cost for data stored in ECR"
   value       = var.data_stored_gb * 0.10 
 }
+
+output "s3_estimated_storage_cost" {
+  description = "Estimated monthly cost for S3 standard storage"
+  value       = var.standard_storage_gb * 0.023 
+}
+
+output "s3_estimated_request_cost" {
+  description = "Estimated monthly cost for S3 requests"
+  value       = (var.requests_standard + var.requests_select) * 0.0004
+}
+
+output "s3_estimated_data_returned_cost" {
+  description = "Estimated monthly cost for data returned by S3 Select"
+  value       = var.data_returned_select_gb * 0.0007
+}
+
+output "s3_estimated_data_scanned_cost" {
+  description = "Estimated monthly cost for data scanned by S3 Select"
+  value       = var.data_scanned_select_gb * 0.0007
+}
+
+output "s3_estimated_outbound_data_transfer_cost" {
+  description = "Estimated monthly cost for outbound data transfer to Internet"
+  value       = var.data_transfer_outbound_gb * 0.09
+}
