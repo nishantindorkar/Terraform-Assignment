@@ -36,12 +36,8 @@ module "eks-cluster" {
   env                = var.env
 }
 
-module "customer-master-keys" {
-    source = "../../modules/cmk"
-}
-
-module "linux-instances" {
-  source                 = "../../modules/linux_instances"
+module "windows-instances" {
+  source                 = "../../modules/windows_instances"
   instance_type          = var.instance_type
   key_name               = var.key_name
   appname                = var.appname
@@ -54,4 +50,8 @@ module "linux-instances" {
 
 module "ecr-repository" {
     source = "../../modules/ecr"
+}
+
+module "customer-master-keys" {
+    source = "../../modules/cmk"
 }
