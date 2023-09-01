@@ -61,3 +61,13 @@ module "simple-storage-service" {
     appname                = var.appname
     env                    = var.env
 }
+
+module "elastic-block-store" {
+    source = "../../modules/ebs"
+    redis_volume_count   = var.redis_volume_count
+    jenkins_volume_count = var.jenkins_volume_count
+    volume_size_gb       = var.volume_size_gb
+    rabbitmq_volume_count = var.rabbitmq_volume_count
+    rabbitmq_volume_size_gb = var.rabbitmq_volume_size_gb
+    availability_zones   = var.availability_zones
+}

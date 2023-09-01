@@ -63,3 +63,33 @@ output "s3_estimated_outbound_data_transfer_cost" {
   description = "Estimated monthly cost for outbound data transfer to Internet"
   value       = var.data_transfer_outbound_gb * 0.09
 }
+
+output "ebs_estimated_redis_storage_cost" {
+  description = "Estimated monthly cost for Redis cluster EBS storage"
+  value       = (var.redis_volume_count * var.volume_size_gb * var.average_instance_duration_hours / 720) * 0.1  
+}
+
+output "ebs_estimated_jenkins_storage_cost" {
+  description = "Estimated monthly cost for Jenkins EBS storage"
+  value       = (var.jenkins_volume_count * var.volume_size_gb * var.average_instance_duration_hours / 720) * 0.1
+}  
+output "ebs_estimated_redis_snapshot_cost" {
+  description = "Estimated monthly cost for Redis cluster EBS snapshots"
+  value       = (var.snapshot_frequency * var.amount_changed_per_snapshot_gb * var.redis_volume_count / 1000) * 0.05  
+}
+
+output "ebs_estimated_jenkins_snapshot_cost" {
+  description = "Estimated monthly cost for Jenkins EBS snapshots"
+  value       = (var.snapshot_frequency * var.amount_changed_per_snapshot_gb * var.jenkins_volume_count / 1000) * 0.05  
+}
+
+
+output "ebs_estimated_rabbitmq_storage_cost" {
+  description = "Estimated monthly cost for RabbitMQ EBS storage"
+  value       = (var.rabbitmq_volume_count * var.rabbitmq_volume_size_gb * var.rabbitmq_average_instance_duration_hours / 720) * 0.1  
+}
+
+output "ebs_estimated_rabbitmq_snapshot_cost" {
+  description = "Estimated monthly cost for RabbitMQ EBS snapshots"
+  value       = (var.rabbitmq_snapshot_frequency * var.rabbitmq_amount_changed_per_snapshot_gb * var.rabbitmq_volume_count / 1000) * 0.05  
+}
