@@ -21,5 +21,15 @@ output "estimated_lb_monthly_cost" {
 
 output "estimated_eks_monthly_cost" {
   description = "Estimated monthly cost for eks processed bytes"
-  value       = var.eks_cluster_cost * 0.01
+  value       = var.eks_cluster_cost * 73
+}
+
+output "estimated_request_cmk_cost" {
+  description = "Estimated cost for the specified number of symmetric requests"
+  value       = var.number_of_symmetric_requests * 0.03  
+}
+
+output "estimated_ec2_instances_cost" {
+  description = "Estimated cost for the specified number of instances"
+  value       = var.number_of_ec2_instances * 77.45  
 }

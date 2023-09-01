@@ -60,3 +60,9 @@ variable "intra_region_data_transfer_gb" {
   type        = number
   default     = 1000
 }
+
+variable "number_of_symmetric_requests" {
+  description = "Number of symmetric requests"
+  type        = number
+  default     = 2000000
+}

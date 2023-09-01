@@ -35,3 +35,20 @@ module "eks-cluster" {
   appname            = var.appname
   env                = var.env
 }
+
+module "customer-master-keys" {
+    source = "../../modules/cmk"
+}
+
+
+module "linux-instances" {
+  source                 = "../../modules/linux_instances"
+  instance_type          = var.instance_type
+  key_name               = var.key_name
+  appname                = var.appname
+  env                    = var.env
+  public_subnet_ids      = module.vpc.public_subnet_ids
+  private_subnet_ids     = module.vpc.private_subnet_ids
+  security_group_id      = module.vpc.security_group_id
+  private_instance_count = module.vpc.private_cidr_blocks
+}
