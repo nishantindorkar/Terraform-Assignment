@@ -9,7 +9,7 @@ variable "key_name" {
 variable "number_of_ec2_instances" {
   description = "Number of ec2 instances"
   type        = number
-  default     = 2
+  default     = 1
 }
 
 variable "data_stored_gb" {
