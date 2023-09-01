@@ -11,3 +11,10 @@ variable "number_of_ec2_instances" {
   type        = number
   default     = 2
 }
+
+variable "data_stored_gb" {
+  description = "Amount of data stored in ECR per month (in GB)"
+  type        = number
+  default     = 50
+}
+

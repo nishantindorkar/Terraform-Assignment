@@ -24,7 +24,7 @@ output "estimated_eks_monthly_cost" {
   value       = var.eks_cluster_cost * 73
 }
 
-output "estimated_request_cmk_cost" {
+output "estimated_cmk_request_cost" {
   description = "Estimated cost for the specified number of symmetric requests"
   value       = var.number_of_symmetric_requests * 0.03  
 }
@@ -32,4 +32,9 @@ output "estimated_request_cmk_cost" {
 output "estimated_ec2_instances_cost" {
   description = "Estimated cost for the specified number of instances"
   value       = var.number_of_ec2_instances * 77.45  
+}
+
+output "estimated_ecr_storage_cost" {
+  description = "Estimated monthly cost for data stored in ECR"
+  value       = var.data_stored_gb * 0.10 
 }

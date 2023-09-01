@@ -5,8 +5,7 @@ variable "number_of_cmk" {
 }
 
 resource "aws_kms_key" "customer_managed_keys" {
-  count = var.number_of_cmk
-
+  count       = var.number_of_cmk
   description = "Customer Managed CMK ${count.index + 1}"
 }
 

@@ -40,7 +40,6 @@ module "customer-master-keys" {
     source = "../../modules/cmk"
 }
 
-
 module "linux-instances" {
   source                 = "../../modules/linux_instances"
   instance_type          = var.instance_type
@@ -51,4 +50,8 @@ module "linux-instances" {
   private_subnet_ids     = module.vpc.private_subnet_ids
   security_group_id      = module.vpc.security_group_id
   private_instance_count = module.vpc.private_cidr_blocks
+}
+
+module "ecr-repository" {
+    source = "../../modules/ecr"
 }
